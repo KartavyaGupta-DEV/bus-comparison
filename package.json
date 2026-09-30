@@ -1,0 +1,14 @@
+{
+  "name": "bus-fare-compare",
+  "version": "1.0.0",
+  "description": "Compare bus fares across redBus, AbhiBus, MakeMyTrip and IntrCity in one search",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

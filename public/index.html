@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BusCompare – Find the cheapest bus ticket across platforms</title>
+  <meta name="description" content="Compare bus fares from redBus, AbhiBus, MakeMyTrip, IntrCity, Goibibo, Cleartrip, FlixBus, EaseMyTrip, Paytm and ixigo in one search." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 11h16M8 18v3M16 18v3"/><circle cx="8" cy="14.5" r="1"/><circle cx="16" cy="14.5" r="1"/></svg>
+        </span>
+        Bus<span>Compare</span>
+      </a>
+      <nav class="platform-pills" id="platform-pills" aria-label="Platforms compared"></nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>One search. Every platform. <span class="accent">Cheapest bus.</span></h1>
+      <p class="subtitle">We check redBus, AbhiBus, MakeMyTrip, Goibibo, Cleartrip, FlixBus, IntrCity, EaseMyTrip, Paytm and ixigo at the same time and show you where each bus is cheapest after discounts.</p>
+
+      <form id="search-form" class="search-card" novalidate>
+        <div class="field field-city">
+          <label for="from">From</label>
+          <input id="from" name="from" list="city-list" placeholder="Source city" autocomplete="off" required />
+        </div>
+
+        <button type="button" id="swap" class="swap" title="Swap source and destination" aria-label="Swap source and destination">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h13l-4-4M17 17H4l4 4"/></svg>
+        </button>
+
+        <div class="field field-city">
+          <label for="to">To</label>
+          <input id="to" name="to" list="city-list" placeholder="Destination city" autocomplete="off" required />
+        </div>
+
+        <div class="field">
+          <label for="date">Date</label>
+          <input id="date" name="date" type="date" required />
+        </div>
+
+        <div class="field">
+          <label for="time">Depart after</label>
+          <input id="time" name="time" type="time" />
+        </div>
+
+        <div class="field field-seats">
+          <label for="seats">Seats</label>
+          <div class="stepper">
+            <button type="button" data-step="-1" aria-label="Fewer seats">−</button>
+            <input id="seats" name="seats" type="number" min="1" max="6" value="1" required />
+            <button type="button" data-step="1" aria-label="More seats">+</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-search" id="search-btn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          Compare prices
+        </button>
+
+        <datalist id="city-list"></datalist>
+      </form>
+
+      <p id="form-error" class="form-error" role="alert" hidden></p>
+
+      <div class="popular">
+        <span>Popular:</span>
+        <button type="button" data-route="Bangalore|Chennai">Bangalore → Chennai</button>
+        <button type="button" data-route="Mumbai|Pune">Mumbai → Pune</button>
+        <button type="button" data-route="Delhi|Jaipur">Delhi → Jaipur</button>
+        <button type="button" data-route="Hyderabad|Vijayawada">Hyderabad → Vijayawada</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" id="results" aria-live="polite">
+    <section class="empty-state" id="intro">
+      <div class="how">
+        <div><b>1</b><h3>Enter your trip</h3><p>Source, destination, date, time and number of seats.</p></div>
+        <div><b>2</b><h3>We search all platforms</h3><p>Every platform is queried in parallel for the same buses.</p></div>
+        <div><b>3</b><h3>Book the best deal</h3><p>See the discounted price on each platform and book where it's cheapest.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p><strong>Note:</strong> Platform results are currently <em>demo data</em> generated for comparison. Prices and offer codes are not real until live platform integrations are connected.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
